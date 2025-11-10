@@ -21,12 +21,13 @@ export function ProfilePreview(profile, options = {}) {
   preview.appendChild(name); //added
 
   if (!shortForm) {
+    //added
     const bio = document.createElement("p");
     bio.textContent = profile.bio;
     bio.dataset.testid = "profileBio";
-    preview.appendChild(bio);
+    preview.appendChild(bio); //added
   }
-  // preview.appendChild(picture);
+  // preview.appendChild(picture); // commented these
   // preview.appendChild(name);
   // preview.appendChild(bio);
 
