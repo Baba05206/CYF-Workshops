@@ -31,65 +31,65 @@ describe("profile preview", () => {
     });
   });
 
-  describe.skip("available option", () => {
-    test("only notice that preview is unavailable is displayed with shortform on, available off", () => {
-      const profile = {
-        pictureSrc: "/null",
-        name: "N/A",
-        bio: "N/A",
-      };
-      Object.freeze(profile);
+  //describe.skip("available option", () => {
+  test("only notice that preview is unavailable is displayed with shortform on, available off", () => {
+    const profile = {
+      pictureSrc: "/null",
+      name: "N/A",
+      bio: "N/A",
+    };
+    Object.freeze(profile);
 
-      const container = ProfilePreview(profile, {
-        available: false,
-        shortForm: true,
-      });
-
-      expect(container.childElementCount).toBe(1);
-      expect(container.children[0]).toHaveTextContent(
-        "Profile preview unavailable"
-      );
+    const container = ProfilePreview(profile, {
+      available: false,
+      shortForm: true,
     });
 
-    test("only notice that preview is unavailable is displayed with shortform off, available off", () => {
-      const profile = {
-        pictureSrc: "/null",
-        name: "N/A",
-        bio: "N/A",
-      };
-      Object.freeze(profile);
-
-      const container = ProfilePreview(profile, {
-        available: false,
-        shortForm: false,
-      });
-
-      expect(container.childElementCount).toBe(1);
-      expect(container.children[0]).toHaveTextContent(
-        "Profile preview unavailable"
-      );
-    });
+    expect(container.childElementCount).toBe(1);
+    expect(container.children[0]).toHaveTextContent(
+      "Profile preview unavailable"
+    );
   });
 
-  describe.skip("short form option", () => {
-    test("contains profile info except the bio with shortform on", () => {
-      const profile = {
-        pictureSrc: "/picture",
-        name: "Jane Doe",
-        bio: "Duis porta neque sed eros.",
-      };
-      Object.freeze(profile);
+  test("only notice that preview is unavailable is displayed with shortform off, available off", () => {
+    const profile = {
+      pictureSrc: "/null",
+      name: "N/A",
+      bio: "N/A",
+    };
+    Object.freeze(profile);
 
-      const container = ProfilePreview(profile, {
-        shortForm: true,
-      });
-
-      const image = getByTestId(container, "profilePicture");
-      const name = getByTestId(container, "profileName");
-
-      expect(image.src).toContain(profile.pictureSrc);
-      expect(name).toHaveTextContent(profile.name);
-      expect(container.childElementCount).toBe(2);
+    const container = ProfilePreview(profile, {
+      available: false,
+      shortForm: false,
     });
+
+    expect(container.childElementCount).toBe(1);
+    expect(container.children[0]).toHaveTextContent(
+      "Profile preview unavailable"
+    );
   });
 });
+
+describe.skip("short form option", () => {
+  test("contains profile info except the bio with shortform on", () => {
+    const profile = {
+      pictureSrc: "/picture",
+      name: "Jane Doe",
+      bio: "Duis porta neque sed eros.",
+    };
+    Object.freeze(profile);
+
+    const container = ProfilePreview(profile, {
+      shortForm: true,
+    });
+
+    const image = getByTestId(container, "profilePicture");
+    const name = getByTestId(container, "profileName");
+
+    expect(image.src).toContain(profile.pictureSrc);
+    expect(name).toHaveTextContent(profile.name);
+    expect(container.childElementCount).toBe(2);
+  });
+});
+//);
